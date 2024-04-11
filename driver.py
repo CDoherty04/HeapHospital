@@ -8,7 +8,7 @@ Purpose: Refresh on EECS 168 concepts and familiarize self with tsv files
 
 Run Driver.py to begin the program
 """
-from executive import Executive
+from hospital import Hospital
 
 if __name__ == "__main__":
 
@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
         try:
             file_name = input("Enter the name of the input file: ")  # input.txt
-            my_exec = Executive(file_name)
+            my_exec = Hospital(file_name)
             my_exec.run()
             break
 

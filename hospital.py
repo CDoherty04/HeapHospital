@@ -2,7 +2,7 @@ from maxheap import MaxHeap
 from filehandler import file_handler
 
 
-class Executive:
+class Hospital:
 
     def __init__(self, file_name):
         self.instructions = file_handler(file_name)
