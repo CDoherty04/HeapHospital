@@ -1,27 +1,38 @@
 from maxheap import MaxHeap
 from filehandler import file_handler
+from patient import Patient
 
 
 class Hospital:
 
     def __init__(self, file_name):
-        self.instructions = file_handler(file_name)
+        self.lines = file_handler(file_name)
         self.priority_queue = MaxHeap()
 
     def run(self):
         """handles function calls and user input for the program"""
 
-        for instruction in self.instructions:
+        print("\n-----------------------------\n")
 
-            match instruction.split(" ")[0]:
+        for line in self.lines:
+            instruction = line.split(" ")
+
+            match instruction[0]:
 
                 # A patient arrives
                 case "ARRIVE":
-                    pass
+                    # Fill out the patient's information
+                    new_patient = Patient(instruction[1], instruction[2], instruction[3],
+                                          instruction[4], instruction[5])
+
+                    # Add them to the queue
+                    new_patient.set_arrival(self.priority_queue.length()+1)
+                    self.priority_queue.add(new_patient)
 
                 # Displays the information of the next patient in line
                 case "NEXT":
-                    pass
+                    print(self.priority_queue.get_max())
+                    print()
 
                 # Treats the next patient in line
                 case "TREAT":

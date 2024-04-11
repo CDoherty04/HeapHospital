@@ -2,6 +2,15 @@ class MaxHeap:
     def __init__(self):
         self._heap = []
 
+    def get_max(self):
+        """Returns the top, or max value of the maxheap"""
+
+        # If the heap is empty raise an Index Error
+        if len(self._heap) > 0:
+            return self._heap[0]
+        else:
+            raise IndexError
+
     def length(self):
         """Gets a count of how many elements are in the heap"""
 
