@@ -36,5 +36,5 @@ class Patient:
     def __repr__(self):
         """The patient's information is displayed in a well formatted way"""
 
-        return (f"Name: {self.last_name}, {self.first_name}.\nAge: {str(self.age)}\nSuffers from: "
-                f"{self.illness}\nIllness severity: {str(self.severity)}\nArrival order: {self.arrival_order}")
+        return (f"\tName: {self.last_name}, {self.first_name}\n\tAge: {str(self.age)}\n\tSuffers from: "
+                f"{self.illness}\n\tIllness severity: {str(self.severity)}\n\tArrival order: {self.arrival_order}")

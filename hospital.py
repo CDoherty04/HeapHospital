@@ -31,18 +31,19 @@ class Hospital:
 
                 # Displays the information of the next patient in line
                 case "NEXT":
+                    print("Next patient:")
                     print(self.priority_queue.get_max())
                     print()
 
-                # Treats the next patient in line
+                # Treats the patient with the highest severity level, who is next in line
                 case "TREAT":
-                    pass
+                    self.priority_queue.remove()
 
                 # Displays patient count
                 case "COUNT":
                     count = self.priority_queue.length()
                     if count == 1:
-                        print("There is 1 patients waiting\n")
+                        print("There is 1 patient waiting\n")
                     else:
                         print(f"There are {count} patients waiting\n")
 
