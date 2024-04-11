@@ -17,27 +17,37 @@ class Hospital:
         for line in self.lines:
             instruction = line.split(" ")
 
-            match instruction[0]:
+            match instruction[0].upper():
 
                 # A patient arrives
                 case "ARRIVE":
-                    # Fill out the patient's information
-                    new_patient = Patient(instruction[1], instruction[2], instruction[3],
-                                          instruction[4], instruction[5])
+                    try:
+                        # Fill out the patient's information
+                        new_patient = Patient(instruction[1], instruction[2], instruction[3],
+                                              instruction[4], instruction[5])
 
-                    # Add them to the queue
-                    new_patient.set_arrival(self.priority_queue.length()+1)
-                    self.priority_queue.add(new_patient)
+                        # Add them to the queue
+                        new_patient.set_arrival(self.priority_queue.length()+1)
+                        self.priority_queue.add(new_patient)
+                    except IndexError:
+                        print("There seems to be a problem processing this patients information, "
+                              "we'll have to turn them away.\n")
 
                 # Displays the information of the next patient in line
                 case "NEXT":
-                    print("Next patient:")
-                    print(self.priority_queue.get_max())
-                    print()
+                    if self.priority_queue.length() < 1:
+                        print("There is no next patient\n")
+                    else:
+                        print("Next patient:")
+                        print(self.priority_queue.get_max())
+                        print()
 
                 # Treats the patient with the highest severity level, who is next in line
                 case "TREAT":
-                    self.priority_queue.remove()
+                    if self.priority_queue.length() < 1:
+                        print("There is no patient to treat\n")
+                    else:
+                        self.priority_queue.remove()
 
                 # Displays patient count
                 case "COUNT":
@@ -49,4 +59,4 @@ class Hospital:
 
                 # Default case
                 case _:
-                    print("Invalid input, continuing...")
+                    print("Invalid input, continuing...\n")
